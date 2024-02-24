@@ -12,9 +12,10 @@ const cardElement = cardTemplate.querySelector(".card");
 function createCard(cardData, deleteCard) {
   const cardCopy = cardElement.cloneNode(true);
   const buttonDelete = cardCopy.querySelector(".card__delete-button");
+  const cardImage = cardCopy.querySelector(".card__image");
 
-  cardCopy.querySelector(".card__image").src = cardData.link;
-  cardCopy.querySelector(".card__image").alt = cardData.name;
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
   cardCopy.querySelector(".card__title").textContent = cardData.name;
 
   buttonDelete.addEventListener("click", deleteCard);
