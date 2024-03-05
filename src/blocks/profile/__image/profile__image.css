@@ -3,6 +3,7 @@
   height: 120px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
+  background-image: url('../../../images/avatar.jpg');
   border-radius: 50%;
   background-size: cover;
   background-position: center;
