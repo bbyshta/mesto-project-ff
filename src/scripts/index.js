@@ -7,52 +7,66 @@ const profileEditBtn = document.querySelector(".profile__edit-button");
 const popupEditProfile = document.querySelector(".popup_type_edit");
 const profileName = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
-const editProfile = document.forms["edit-profile"];
-const newPlace = document.forms["new-place"];
+const editProfileForm = document.forms["edit-profile"];
+const newPlaceForm = document.forms["new-place"];
 const cardAddBtn = document.querySelector(".profile__add-button");
 const popupAddCard = document.querySelector(".popup_type_new-card");
+const popups = document.querySelectorAll(".popup");
+const popupImage = document.querySelector(".popup_type_image");
+const image = popupImage.querySelector(".popup__image");
+const caption = popupImage.querySelector(".popup__caption");
+
+//Обработчик закрытия попапов
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains("popup_is-opened")) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains("popup__close")) {
+      closePopup(popup);
+    }
+  })
+})
 
 //Открытие/закрытие попапа редактирования профиля
 profileEditBtn.addEventListener('click', () => {
   openPopup(popupEditProfile);
-  editProfile.elements.name.value = profileName.textContent;
-  editProfile.elements.description.value = profileDescription.textContent;
-  closePopup(popupEditProfile);
+  editProfileForm.elements.name.value = profileName.textContent;
+  editProfileForm.elements.description.value = profileDescription.textContent;
 })
 
 //Сабмит изменений в профиле
 function handleEditSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = editProfile.elements.name.value;
-  profileDescription.textContent = editProfile.elements.description.value;
+  profileName.textContent = editProfileForm.elements.name.value;
+  profileDescription.textContent = editProfileForm.elements.description.value;
+  closePopup(popupEditProfile);
 }
 
-editProfile.addEventListener('submit', handleEditSubmit);
+editProfileForm.addEventListener('submit', handleEditSubmit);
 
 //Открытие/закрытие попапа добавления карточки
 cardAddBtn.addEventListener('click', () => {
   openPopup(popupAddCard);
-  closePopup(popupAddCard);
 })
 
 //Сабмит новой карточки
 function submitNewCard (evt) {
   evt.preventDefault();
-  const card = createCard(newPlace, deleteCard, likeBtnHandler, clickImageHandler);
+  const cardObject = {};
+  cardObject.name = newPlaceForm.elements["place-name"].value;
+  cardObject.link = newPlaceForm.elements.link.value;
+  const card = createCard(cardObject, {deleteCard, likeBtnHandler, clickImageHandler});
   cardsContainer.prepend(card);
-  popupAddCard.classList.remove("popup_is-opened");
-  newPlace.reset();
+  closePopup(popupAddCard);
+  newPlaceForm.reset();
 }
 
-newPlace.addEventListener('submit', submitNewCard);
+newPlaceForm.addEventListener('submit', submitNewCard);
 
 //Обработчик клика по изображению
 function clickImageHandler(evt) {
-  const popupImage = document.querySelector(".popup_type_image");
-  const image = popupImage.querySelector(".popup__image");
-  const caption = popupImage.querySelector(".popup__caption");
   openPopup(popupImage);
-  closePopup(popupImage);
   image.src = evt.target.src;
   image.alt = evt.target.alt;
   caption.textContent = evt.target.alt;
@@ -60,6 +74,6 @@ function clickImageHandler(evt) {
 
 //Вывести карточки из массива на страницу
 initialCards.forEach((item) => {
-  const card = createCard(item, deleteCard, likeBtnHandler, clickImageHandler);
+  const card = createCard(item, {deleteCard, likeBtnHandler, clickImageHandler});
   cardsContainer.append(card);
 });

@@ -25,8 +25,7 @@ const initialCards = [
     }
 ];
 
-//Функция создания карточки
-function createCard(cardData, deleteCard, likeBtnHandler, clickImageHandler) {
+function createCard(cardData, {deleteCard, likeBtnHandler, clickImageHandler}) {
   const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate.querySelector(".card");
   const cardCopy = cardElement.cloneNode(true);
@@ -34,19 +33,13 @@ function createCard(cardData, deleteCard, likeBtnHandler, clickImageHandler) {
   const cardCopyImage = cardCopy.querySelector(".card__image");
   const likeBtn = cardCopy.querySelector(".card__like-button");
 
-  if (cardData === document.forms['new-place']) {
-    cardCopyImage.alt = cardData.elements["place-name"].value;
-    cardCopyImage.src = cardData.elements.link.value;
-    cardCopy.querySelector(".card__title").textContent = cardData.elements["place-name"].value;
-  } else {
-    cardCopyImage.src = cardData.link;
-    cardCopyImage.alt = cardData.name;
-    cardCopy.querySelector(".card__title").textContent = cardData.name;
-  }
+  cardCopyImage.src = cardData.link;
+  cardCopyImage.alt = cardData.name;
+  cardCopy.querySelector(".card__title").textContent = cardData.name;
   
   buttonDelete.addEventListener("click", deleteCard);
   likeBtn.addEventListener("click", likeBtnHandler);
-  cardCopyImage.addEventListener('click', clickImageHandler)
+  cardCopyImage.addEventListener('click', clickImageHandler);
 
   return cardCopy;
 }
