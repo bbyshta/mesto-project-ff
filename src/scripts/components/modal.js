@@ -8,13 +8,13 @@ function handleEscape (evt) {
 //Открытие попапа
 function openPopup (popup) {
   popup.classList.add("popup_is-opened");
-  popup.addEventListener("keydown", handleEscape);
+  document.addEventListener("keydown", handleEscape);
 }
 
 //Закрытие попапа
 function closePopup (popup) {
   popup.classList.remove("popup_is-opened");
-  popup.removeEventListener("keydown", handleEscape);
+  document.removeEventListener("keydown", handleEscape);
 }
 
 export {openPopup, closePopup};
