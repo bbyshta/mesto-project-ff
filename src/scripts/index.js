@@ -1,7 +1,7 @@
 import '../pages/index.css';
 import {openPopup, closePopup} from './components/modal.js';
 import {createCard, deleteCardFromDOM, toggleLikeState} from './components/cards.js';
-import {showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListeners, clearValidation, enableValidation} from './components/validation.js';
+import {clearValidation, enableValidation} from './components/validation.js';
 import {config, getUserInfo, getInitialCards, sendProfileChanges, postNewCard, deleteCard, likeCard, dislikeCard, changeAvatar} from './components/api.js';
 
 const cardsContainer = document.querySelector(".places__list");

@@ -74,4 +74,4 @@ function enableValidation (validationConfig) {
   })
 }
 
-export {showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListeners, clearValidation, enableValidation};
+export {clearValidation, enableValidation};
