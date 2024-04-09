@@ -13,6 +13,7 @@
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+  align-self: flex-end;
 }
 
 .card__like-button:hover {

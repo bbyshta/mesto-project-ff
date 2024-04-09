@@ -1,0 +1,16 @@
+.profile__image-edit-button {
+  background-image: url(../../../images/edit-icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 26px 26px;
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+
+.profile__image:hover .profile__image-edit-button {
+  opacity: 100%;
+  backdrop-filter: brightness(30%);
+}
