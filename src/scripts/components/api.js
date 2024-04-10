@@ -6,15 +6,20 @@ const config = {
   }
 }
 
+function checkResStatus (res) {
+  if (res.ok) {
+    return (res.json());
+  } else {
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
+}
+
 function getUserInfo () {
   return fetch(`${config.baseUrl}/users/me`, {
     headers: config.headers
   })
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
+  .then((res) => {
+    return checkResStatus(res);
   })
 }
 
@@ -23,10 +28,7 @@ function getInitialCards () {
     headers: config.headers
   })
   .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Не удается получить карточки`);
+    return checkResStatus(res);
   })
 }
 
@@ -40,9 +42,7 @@ function sendProfileChanges (newName, newDescription) {
     })
   })
   .then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Изменения не сохранены! Ошибка: ${res.status}`);
-    }
+    return checkResStatus(res);
   })
 }
 
@@ -55,11 +55,7 @@ function changeAvatar (avatar) {
     })
   })
   .then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Изменения не сохранены! Ошибка: ${res.status}`);
-    } else {
-      return res.json();
-    }
+    return checkResStatus(res);
   })
 }
 
@@ -73,11 +69,7 @@ function postNewCard (cardData) {
     })
   })
   .then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Ошибка при добавлении карточки: ${res.status}`);
-    } else {
-      return res.json();
-    }
+    return checkResStatus(res);
   })
 }
 
@@ -87,9 +79,7 @@ function deleteCard (cardId) {
     headers: config.headers
   })
   .then((res) => {
-    if(!res.ok) {
-      return Promise.reject(`Не удалось удалить карточку: ${res.status}`);
-    }
+    return checkResStatus(res);
   })
 }
 
@@ -99,12 +89,8 @@ function likeCard (cardId) {
     headers: config.headers
   })
   .then((res) => {
-    if(!res.ok) {
-      return Promise.reject(`Не удалось лайкнуть карточку: ${res.status}`);
-    } else {
-      return res.json();
-    }
-})
+    return checkResStatus(res);
+  })
 }
 
 function dislikeCard (cardId) {
@@ -113,12 +99,8 @@ function dislikeCard (cardId) {
     headers: config.headers
   })
   .then((res) => {
-    if(!res.ok) {
-      return Promise.reject(`Не удалось убрать лайк: ${res.status}`);
-    } else {
-      return res.json();
-    }
+    return checkResStatus(res);
   })
 }
 
-export {config, getUserInfo, getInitialCards, sendProfileChanges, postNewCard, deleteCard, likeCard, dislikeCard, changeAvatar};
+export {getUserInfo, getInitialCards, sendProfileChanges, postNewCard, deleteCard, likeCard, dislikeCard, changeAvatar};

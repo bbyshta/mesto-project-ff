@@ -1,5 +1,4 @@
-function createCard(cardData, userId, onDeleteCard, likeBtnHandler, clickImageHandler) {
-  const cardTemplate = document.querySelector("#card-template").content;
+function createCard(cardTemplate, cardData, userId, onDeleteCard, likeBtnHandler, clickImageHandler) {
   const cardElement = cardTemplate.querySelector(".card");
   const cardCopy = cardElement.cloneNode(true);
   const buttonDelete = cardCopy.querySelector(".card__delete-button");
