@@ -35,4 +35,5 @@ npm run build
 [![SyiPL.gif](https://s11.gifyu.com/images/SyiPL.gif)](https://gifyu.com/image/SyiPL)
 
 4) И удалить свои карточки:
+
 [![SyiPN.gif](https://s11.gifyu.com/images/SyiPN.gif)](https://gifyu.com/image/SyiPN)
