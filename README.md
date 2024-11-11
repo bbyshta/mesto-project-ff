@@ -3,6 +3,7 @@
 [![SyiJN.png](https://s11.gifyu.com/images/SyiJN.png)](https://gifyu.com/image/SyiJN)
 
 ## Установка зависимостей
+Для установки и запуска проекта, необходим [NodeJS](https://nodejs.org/)
 Клонируйте репозиторий. Установите зависимости, написав в терминале
 ```sh
 npm i
