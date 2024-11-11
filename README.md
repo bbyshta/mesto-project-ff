@@ -19,4 +19,22 @@ npm run dev
 ```sh
 npm run build
 ```
+## Что изучил:
+- изучил валидацию форм, настройку валидации
+- использовал регулярные выражения
+- впервые поработал с API и JSON
+- научился отправлять fetch-запросы
+- изучил HTTP-запросы
+
 ## Описание функционала
+1) На сайте можно просматривать карточки других пользователей, а также лайкать их:
+[![SyiJB.gif](https://s11.gifyu.com/images/SyiJB.gif)](https://gifyu.com/image/SyiJB)
+
+2) Можно редактировать имя и аватар профиля (в формах настроена валидация):
+[![SyiPS.gif](https://s1.gifyu.com/images/SyiPS.gif)](https://gifyu.com/image/SyiPS)
+
+3) Возможно загрузить собственную карточку с описанием:
+[![SyiPL.gif](https://s11.gifyu.com/images/SyiPL.gif)](https://gifyu.com/image/SyiPL)
+
+4) И удалить свои карточки:
+[![SyiPN.gif](https://s11.gifyu.com/images/SyiPN.gif)](https://gifyu.com/image/SyiPN)
